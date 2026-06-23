@@ -82,7 +82,7 @@ export default function PersonaPage({ params }: { params: Promise<{ lang: string
   const avatarSrc = getAvatarUrl(persona);
 
   return (
-    <div className="min-h-screen bg-background py-12 px-4 sm:px-8 flex justify-center items-start">
+    <div className="min-h-screen py-12 px-4 sm:px-8 flex justify-center items-start">
       <motion.div
         layoutId={`card-${persona.id}`}
         className="relative w-full max-w-4xl bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden mt-8"

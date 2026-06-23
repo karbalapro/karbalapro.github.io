@@ -43,7 +43,7 @@ export default function PersonaGallery() {
   };
 
   return (
-    <div className="min-h-screen bg-background py-12 px-4 sm:px-8">
+    <div className="min-h-screen py-12 px-4 sm:px-8">
 
       <div className="max-w-6xl mx-auto">
         <header className="mb-12 text-center">

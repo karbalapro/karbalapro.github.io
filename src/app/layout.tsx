@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
+import Atmosphere from "@/components/Atmosphere";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,13 +67,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-white">
+      <body className="min-h-full flex flex-col text-white">
         {/* Inject JSON-LD Schema for AI/LLM SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <LanguageProvider>
+          <Atmosphere />
           <Header />
           <main className="flex-1">
             {children}
