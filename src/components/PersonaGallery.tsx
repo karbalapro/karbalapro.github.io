@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -10,11 +10,17 @@ import { useLanguage, Language } from "@/contexts/LanguageContext";
 
 import { getAvatarUrl } from "@/utils/avatar";
 
-export default function PersonaGallery() {
+export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const { language, setLanguage, dir } = useLanguage();
+
+  useEffect(() => {
+    if (routeLang && ['fa', 'en', 'ar'].includes(routeLang)) {
+      setLanguage(routeLang as any);
+    }
+  }, [routeLang, setLanguage]);
 
   const categoriesSet = new Set<string>();
   personas.forEach(p => {
@@ -91,7 +97,7 @@ export default function PersonaGallery() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredPersonas.map((persona) => (
-              <Link key={persona.id} href={`/${language}/personas/${persona.id}`} className="block">
+              <Link key={persona.id} href={`/${language}/personas/${persona.id}`} className="block h-full">
                 <PersonaCard 
                   persona={persona} 
                   onClick={() => {}} 

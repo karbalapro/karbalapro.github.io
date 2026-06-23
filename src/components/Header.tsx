@@ -22,9 +22,9 @@ export default function Header() {
   };
 
   const navItems = [
-    { name: t("ui.home"), path: "/" },
-    { name: t("ui.liveZiyarat"), path: "/live" },
-    { name: t("ui.ziyarats"), path: "/ziyarat" }
+    { name: t("ui.home"), path: `/${language}` },
+    { name: t("ui.liveZiyarat"), path: `/${language}/live` },
+    { name: t("ui.ziyarats"), path: `/${language}/ziyarat` }
   ];
 
   return (

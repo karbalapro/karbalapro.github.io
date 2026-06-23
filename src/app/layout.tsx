@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://karbalapro.github.io'),
   title: {
-    default: "دانشنامه عاشورا و زیارت‌نامه‌های تعاملی | Ashura Encyclopedia",
+    default: "دانشنامه عاشورا و زیارت‌ نامه‌های تعاملی | Ashura Encyclopedia",
     template: "%s | دانشنامه عاشورا",
   },
   description: "جامع‌ترین دایرةالمعارف شخصیت‌های واقعه کربلا (بیش از ۲۷۴ شخصیت) به همراه قرائت تعاملی زیارت عاشورا و زیارت وارث با ترجمه سه‌زبانه.",

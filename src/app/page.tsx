@@ -1,9 +1,5 @@
-import PersonaGallery from "@/components/PersonaGallery";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <main className="min-h-screen text-foreground overflow-x-hidden">
-      <PersonaGallery />
-    </main>
-  );
+  redirect('/fa');
 }
