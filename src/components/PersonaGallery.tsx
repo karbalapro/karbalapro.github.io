@@ -16,11 +16,13 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [mounted, setMounted] = useState(false);
   const ITEMS_PER_PAGE = 24; // 24 items per page
   
   const { language, setLanguage, dir } = useLanguage();
 
   useEffect(() => {
+    setMounted(true);
     if (routeLang && ['fa', 'en', 'ar'].includes(routeLang)) {
       setLanguage(routeLang as any);
     }
@@ -147,7 +149,7 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
             </div>
 
             {/* Pagination Controls */}
-            {totalPages > 1 && (
+            {mounted && totalPages > 1 && (
               <div className="mt-16 w-full max-w-4xl mx-auto flex justify-between items-center bg-[#0a0a0a] border border-white/10 p-4 rounded-2xl shadow-2xl">
                 <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
