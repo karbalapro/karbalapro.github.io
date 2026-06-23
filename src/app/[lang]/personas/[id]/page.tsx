@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { use, useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { personas } from "@/data/personas";
 import { getAvatarUrl } from "@/utils/avatar";
@@ -17,6 +17,15 @@ export default function PersonaPage({ params }: { params: Promise<{ lang: string
   const { t } = useTranslation();
   const { dir, setLanguage } = useLanguage();
   const [showToast, setShowToast] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (direction: 'next' | 'prev') => {
+    if (!carouselRef.current) return;
+    const multiplier = dir === 'rtl' ? -1 : 1;
+    const scrollAmount = 300 * multiplier;
+    const delta = direction === 'next' ? scrollAmount : -scrollAmount;
+    carouselRef.current.scrollBy({ left: delta, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     // Ensure the client-side language context matches the URL
@@ -35,10 +44,21 @@ export default function PersonaPage({ params }: { params: Promise<{ lang: string
   const prevPersona = personaIndex > 0 ? personas[personaIndex - 1] : null;
   const nextPersona = personaIndex < personas.length - 1 ? personas[personaIndex + 1] : null;
 
-  // Related personas (same category, max 3, excluding current)
-  const relatedPersonas = personas
-    .filter(p => p.id !== id && p.category === persona.category)
-    .slice(0, 3);
+  // Dynamic deterministic algorithm for Related Personas (7 to 10 max)
+  const sameCategory = personas.filter(p => p.id !== id && p.category === persona.category);
+  const otherCategory = personas.filter(p => p.id !== id && p.category !== persona.category);
+  
+  const deterministicSort = (a: any, b: any) => {
+    const sum = (str: string) => str.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return (sum(a.id) % 100) - (sum(b.id) % 100);
+  };
+
+  const dynamicCount = 7 + (id.length % 4); // Random-like deterministic count between 7 and 10
+  
+  const relatedPersonas = [...sameCategory, ...otherCategory]
+    .filter((v, i, a) => a.findIndex(t => t.id === v.id) === i) // Ensure uniqueness
+    .sort(deterministicSort)
+    .slice(0, dynamicCount);
 
   const handleShare = async () => {
     const shareData = {
@@ -170,8 +190,20 @@ export default function PersonaPage({ params }: { params: Promise<{ lang: string
               <p className="text-lg text-white/80 leading-relaxed">
                 "{t(`personas.${persona.id}.quote`, { defaultValue: '' })}"
               </p>
-              <div className="mt-4 text-sm text-white/40 font-mono">
-                — {t(`personas.${persona.id}.source`, { defaultValue: '' })}
+              <div className="mt-4 text-sm text-white/40 font-mono flex items-center gap-2">
+                <span>—</span>
+                {t(`personas.${persona.id}.sourceUrl`, { defaultValue: '' }) ? (
+                  <a 
+                    href={t(`personas.${persona.id}.sourceUrl`, { defaultValue: '' })} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-[#c1a063] transition-colors hover:underline decoration-[#c1a063]/30 underline-offset-4"
+                  >
+                    {t(`personas.${persona.id}.source`, { defaultValue: '' })}
+                  </a>
+                ) : (
+                  <span>{t(`personas.${persona.id}.source`, { defaultValue: '' })}</span>
+                )}
               </div>
             </div>
           )}
@@ -204,15 +236,45 @@ export default function PersonaPage({ params }: { params: Promise<{ lang: string
             ) : <div className="flex-1" />}
           </div>
 
-          {/* Related Personas */}
+          {/* Related Personas Carousel */}
           {relatedPersonas.length > 0 && (
             <div className="mt-16 pt-8 border-t border-white/5">
-              <h3 className="text-2xl font-bold text-white mb-8">{t("ui.relatedPersonas", { defaultValue: "Related Companions" })}</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="flex justify-between items-end mb-8">
+                <h3 className="text-2xl font-bold text-white">{t("ui.relatedPersonas", { defaultValue: "Related Companions" })}</h3>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={() => scrollCarousel('prev')}
+                    className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+                    aria-label="Previous"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      {dir === 'rtl' ? <path d="M9 18l6-6-6-6" /> : <path d="M15 18l-6-6 6-6" />}
+                    </svg>
+                  </button>
+                  <button 
+                    onClick={() => scrollCarousel('next')}
+                    className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+                    aria-label="Next"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      {dir === 'rtl' ? <path d="M15 18l-6-6 6-6" /> : <path d="M9 18l6-6-6-6" />}
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              
+              {/* RTL Supported Scroll Snap Carousel */}
+              <div 
+                ref={carouselRef}
+                className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-4 px-4 sm:mx-0 sm:px-0 hide-scrollbar" 
+                style={{ scrollBehavior: 'smooth' }}
+              >
                 {relatedPersonas.map((rp) => (
-                  <Link key={rp.id} href={`/${lang}/personas/${rp.id}`} className="block">
-                    <PersonaCard persona={rp} onClick={() => {}} />
-                  </Link>
+                  <div key={rp.id} className="snap-start shrink-0 w-[260px] sm:w-[300px]">
+                    <Link href={`/${lang}/personas/${rp.id}`} className="block h-full">
+                      <PersonaCard persona={rp} onClick={() => {}} />
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>

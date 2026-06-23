@@ -1,17 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 
 export default function Header() {
   const { t } = useTranslation();
   const pathname = usePathname();
+  const router = useRouter();
   const { language, setLanguage, dir } = useLanguage();
 
   const toggleLanguage = (lang: Language) => {
     setLanguage(lang);
+    
+    // If we are on a language-prefixed route, navigate to the new language URL
+    if (pathname.match(/^\/(fa|en|ar)(\/|$)/)) {
+      const newPath = pathname.replace(/^\/(fa|en|ar)/, `/${lang}`);
+      router.push(newPath);
+    }
   };
 
   const navItems = [
