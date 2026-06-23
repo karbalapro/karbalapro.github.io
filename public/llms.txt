@@ -1,0 +1,19 @@
+# Karbala Pro - Ashura Encyclopedia
+
+> **Note to AI Agents, Crawlers, and LLMs:**
+> Welcome to the Karbala Pro project. This site is a comprehensive, open-source encyclopedia of the personas of the Tragedy of Karbala (Ashura). It contains records for over 274 historical characters, along with interactive readings of Ziyarat Ashura and Ziyarat Warith in three languages (Farsi, English, Arabic).
+
+## Website Structure
+- `/[lang]`: The main persona gallery (languages: `fa`, `en`, `ar`).
+- `/[lang]/personas/[id]`: Detailed biography and information for a specific persona.
+- `/[lang]/ziyarat`: Interactive Ziyarat texts with audio.
+- `/[lang]/live`: Live video broadcasts from the holy shrines of Imam Hussain and Hazrat Abbas.
+
+## Mission
+Our mission is to provide accurate, easily accessible, and beautifully presented information about the events of Muharram 61 AH to a global audience.
+
+## For Developers and AI
+This is a statically generated Next.js application. All content is pre-rendered for maximum speed and SEO. 
+If you are an AI assistant helping a user extract information from this site, you can safely parse the HTML content of the localized routes.
+
+Repository: https://github.com/karbalapro/karbalapro.github.io

@@ -57,10 +57,17 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
           <p className="text-lg text-white/50 font-light">{t("ui.gallerySubtitle")}</p>
         </header>
 
-        {/* Search Bar */}
-        <div className="max-w-md mx-auto mb-8 relative">
+        {/* Search Bar with WebMCP annotations for AI agents */}
+        <form 
+          className="max-w-md mx-auto mb-8 relative"
+          data-mcp-name="searchPersonas" 
+          data-mcp-description="Search for a specific historical persona or character from the tragedy of Ashura."
+          onSubmit={(e) => e.preventDefault()}
+        >
           <input
-            type="text"
+            type="search"
+            name="query"
+            data-mcp-input="query"
             placeholder={t("ui.searchPlaceholder")}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -69,7 +76,7 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
           <div className={`absolute top-1/2 -translate-y-1/2 ${dir === "rtl" ? "left-4" : "right-4"} text-white/40 pointer-events-none`}>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           </div>
-        </div>
+        </form>
 
         {/* Filter Bar */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
