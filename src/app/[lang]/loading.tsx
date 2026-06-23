@@ -1,9 +1,11 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 export default function Loading() {
   const { dir } = useLanguage();
+  const { t } = useTranslation();
   
   return (
     <div className="w-full min-h-[60vh] flex flex-col items-center justify-center">
@@ -12,7 +14,7 @@ export default function Loading() {
         className="text-white/50 text-sm font-medium animate-pulse"
         dir={dir}
       >
-        {dir === "rtl" ? "در حال بارگذاری..." : "Loading..."}
+        {t("ui.loading")}
       </p>
     </div>
   );

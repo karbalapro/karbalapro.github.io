@@ -37,5 +37,7 @@
   "prevPage": "السابق",
   "nextPage": "التالي",
   "copyright": "جميع الحقوق محفوظة لموسوعة عاشوراء.",
-  "developedBy": "تطوير:"
+  "developedBy": "تطوير:",
+  "loading": "جاري التحميل...",
+  "loadingPersona": "جاري تحميل بيانات الشخصية..."
 }

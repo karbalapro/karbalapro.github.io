@@ -39,5 +39,7 @@
   "prevPage": "Prev",
   "nextPage": "Next",
   "copyright": "All rights reserved for Karbala Pro.",
-  "developedBy": "Developed by:"
+  "developedBy": "Developed by:",
+  "loading": "Loading...",
+  "loadingPersona": "Loading persona..."
 }
