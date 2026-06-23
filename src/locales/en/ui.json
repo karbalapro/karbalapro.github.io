@@ -13,7 +13,9 @@
     "catPioneers": "Pioneer Martyrs",
     "catSurvivors": "Survivors & Penitents",
     "catCaptives": "Captives",
-    "catEnemies": "The Enemies"
+    "catEnemies": "The Enemies",
+    "prev": "Prev",
+    "next": "Next"
   },
   "home": "Home",
   "liveZiyarat": "Live Ziyarat",
@@ -31,7 +33,9 @@
   "ziyaratAshuraDesc": "Ziyarat Ashura is a highly respected salutation to Imam Hussain (AS) and the martyrs of Karbala.",
   "ziyaratWarithDesc": "Ziyarat Warith connects Imam Hussain (AS) to the divine mission of all Prophets.",
   "linkCopied": "Link copied to clipboard!",
-  "previous": "Previous",
-  "next": "Next",
-  "relatedPersonas": "Related Companions"
+  "previous": "Previous Persona",
+  "next": "Next Persona",
+  "relatedPersonas": "Companions & Related Personas",
+  "prevPage": "Prev",
+  "nextPage": "Next"
 }

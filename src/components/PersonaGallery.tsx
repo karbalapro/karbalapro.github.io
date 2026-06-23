@@ -14,6 +14,10 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isFiltering, setIsFiltering] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 24; // 24 items per page
+  
   const { language, setLanguage, dir } = useLanguage();
 
   useEffect(() => {
@@ -21,6 +25,22 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
       setLanguage(routeLang as any);
     }
   }, [routeLang, setLanguage]);
+
+  const handleFilterClick = (cat: string) => {
+    if (activeFilter === cat) return;
+    setIsFiltering(true);
+    // Allow the React tree to render the spinner before blocking the main thread
+    setTimeout(() => {
+      setActiveFilter(cat);
+      setCurrentPage(1);
+      setIsFiltering(false);
+    }, 150);
+  };
+
+  const handleSearchChange = (val: string) => {
+    setSearchQuery(val);
+    setCurrentPage(1);
+  };
 
   const categoriesSet = new Set<string>();
   personas.forEach(p => {
@@ -43,6 +63,12 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
     
     return matchesFilter && matchesSearch;
   });
+
+  const totalPages = Math.ceil(filteredPersonas.length / ITEMS_PER_PAGE);
+  const paginatedPersonas = filteredPersonas.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   const toggleLanguage = (lang: Language) => {
     setLanguage(lang);
@@ -70,7 +96,7 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
             data-mcp-input="query"
             placeholder={t("ui.searchPlaceholder")}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => handleSearchChange(e.target.value)}
             className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-3 text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
           />
           <div className={`absolute top-1/2 -translate-y-1/2 ${dir === "rtl" ? "left-4" : "right-4"} text-white/40 pointer-events-none`}>
@@ -83,7 +109,7 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActiveFilter(cat)}
+              onClick={() => handleFilterClick(cat)}
               className={`flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium transition-all ${
                 activeFilter === cat 
                   ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]" 
@@ -101,18 +127,75 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredPersonas.map((persona) => (
-              <Link key={persona.id} href={`/${language}/personas/${persona.id}`} className="block h-full">
-                <PersonaCard 
-                  persona={persona} 
-                  onClick={() => {}} 
-                />
-              </Link>
-            ))}
-          </AnimatePresence>
-        </div>
+        {isFiltering ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="w-12 h-12 border-4 border-white/10 border-t-emerald-500 rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <AnimatePresence>
+                {paginatedPersonas.map((persona) => (
+                  <Link key={persona.id} href={`/${language}/personas/${persona.id}`} className="block h-full">
+                    <PersonaCard 
+                      persona={persona} 
+                      onClick={() => {}} 
+                    />
+                  </Link>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="mt-16 w-full max-w-4xl mx-auto flex justify-between items-center bg-[#0a0a0a] border border-white/10 p-4 rounded-2xl shadow-2xl">
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="flex-1 max-w-[120px] px-4 py-3 rounded-xl bg-white/5 text-white/70 hover:bg-white/10 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all font-medium text-center"
+                >
+                  {t("ui.prevPage")}
+                </button>
+                
+                <div className="flex items-center gap-2 overflow-x-auto px-4 hide-scrollbar">
+                  {[...Array(totalPages)].map((_, i) => {
+                    // Show only a few page numbers around the current page
+                    if (
+                      i === 0 || 
+                      i === totalPages - 1 || 
+                      (i >= currentPage - 2 && i <= currentPage)
+                    ) {
+                      return (
+                        <button
+                          key={i}
+                          onClick={() => setCurrentPage(i + 1)}
+                          className={`min-w-[40px] h-10 px-2 rounded-lg flex items-center justify-center transition-all font-bold ${
+                            currentPage === i + 1 
+                              ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]" 
+                              : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white"
+                          }`}
+                        >
+                          {i + 1}
+                        </button>
+                      );
+                    }
+                    if (i === 1 && currentPage > 3) return <span key={i} className="text-white/30 px-1">...</span>;
+                    if (i === totalPages - 2 && currentPage < totalPages - 2) return <span key={i} className="text-white/30 px-1">...</span>;
+                    return null;
+                  })}
+                </div>
+
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="flex-1 max-w-[120px] px-4 py-3 rounded-xl bg-white/5 text-white/70 hover:bg-white/10 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all font-medium text-center"
+                >
+                  {t("ui.nextPage")}
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
