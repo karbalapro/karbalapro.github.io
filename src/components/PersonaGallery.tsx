@@ -157,32 +157,20 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
                   {t("ui.prevPage")}
                 </button>
                 
-                <div className="flex items-center gap-2 overflow-x-auto px-4 hide-scrollbar">
-                  {[...Array(totalPages)].map((_, i) => {
-                    // Show only a few page numbers around the current page
-                    if (
-                      i === 0 || 
-                      i === totalPages - 1 || 
-                      (i >= currentPage - 2 && i <= currentPage)
-                    ) {
-                      return (
-                        <button
-                          key={i}
-                          onClick={() => setCurrentPage(i + 1)}
-                          className={`min-w-[40px] h-10 px-2 rounded-lg flex items-center justify-center transition-all font-bold ${
-                            currentPage === i + 1 
-                              ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]" 
-                              : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white"
-                          }`}
-                        >
-                          {i + 1}
-                        </button>
-                      );
-                    }
-                    if (i === 1 && currentPage > 3) return <span key={i} className="text-white/30 px-1">...</span>;
-                    if (i === totalPages - 2 && currentPage < totalPages - 2) return <span key={i} className="text-white/30 px-1">...</span>;
-                    return null;
-                  })}
+                <div className="flex items-center gap-2 overflow-x-auto px-4 hide-scrollbar py-2">
+                  {[...Array(totalPages)].map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentPage(i + 1)}
+                      className={`min-w-[40px] h-10 px-2 rounded-lg flex items-center justify-center transition-all font-bold shrink-0 ${
+                        currentPage === i + 1 
+                          ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]" 
+                          : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white"
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
                 </div>
 
                 <button
