@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import Atmosphere from "@/components/Atmosphere";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,7 +65,8 @@ export default function RootLayout({
 
   return (
     <html
-      lang="en"
+      lang="fa"
+      dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-white">
@@ -79,6 +81,7 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
+          <Footer />
           <ScrollToTop />
         </LanguageProvider>
       </body>
