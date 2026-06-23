@@ -1,0 +1,33 @@
+{
+  "galleryTitle": "رواة النور",
+  "gallerySubtitle": "تعرف على أبطال ملحمة كربلاء",
+  "searchPlaceholder": "البحث بالاسم أو اللقب...",
+  "age": "العمر",
+  "role": "الدور",
+  "source": "المصدر التاريخي",
+  "filters": {
+    "All": "الكل",
+    "catBaniHashem": "بني هاشم",
+    "catAnsar": "الأنصار",
+    "catWomen": "عقائل الوحي",
+    "catPioneers": "الشهداء الأوائل",
+    "catSurvivors": "التوابون والناجون",
+    "catCaptives": "الأسرى",
+    "catEnemies": "جيش الظلم"
+  },
+  "home": "الرئيسية",
+  "liveZiyarat": "الزيارة المباشرة",
+  "liveTitle": "البث المباشر للعتبات المقدسة",
+  "liveSubtitle": "ارتباط مباشر بكربلاء المقدسة",
+  "shrineHussain": "العتبة الحسينية المقدسة",
+  "shrineAbbas": "العتبة العباسية المقدسة",
+  "ziyarats": "الزيارات",
+  "ziyaratTitle": "كنز الزيارات",
+  "ziyaratSubtitle": "تواصل روحي مع أولياء الله",
+  "fontSize": "حجم الخط",
+  "readZiyarat": "قراءة الزيارة",
+  "ziyaratAshura": "زيارة عاشوراء",
+  "ziyaratWarith": "زيارة وارث",
+  "ziyaratAshuraDesc": "زيارة عاشوراء هي تحية عظيمة الشأن للإمام الحسين (ع) وشهداء كربلاء.",
+  "ziyaratWarithDesc": "زيارة وارث تربط الإمام الحسين (ع) بالرسالة الإلهية لجميع الأنبياء."
+}

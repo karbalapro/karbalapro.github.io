@@ -1,0 +1,33 @@
+{
+  "galleryTitle": "Narrators of Light",
+  "gallerySubtitle": "Discover the heroes of the Karbala epic",
+  "searchPlaceholder": "Search by name or title...",
+  "age": "Age",
+  "role": "Role",
+  "source": "Historical Source",
+  "filters": {
+    "All": "All",
+    "catBaniHashem": "Bani Hashem",
+    "catAnsar": "Companions",
+    "catWomen": "Women of the Household",
+    "catPioneers": "Pioneer Martyrs",
+    "catSurvivors": "Survivors & Penitents",
+    "catCaptives": "Captives",
+    "catEnemies": "The Enemies"
+  },
+  "home": "Home",
+  "liveZiyarat": "Live Ziyarat",
+  "liveTitle": "Holy Shrines Live Stream",
+  "liveSubtitle": "Direct connection to holy Karbala",
+  "shrineHussain": "Holy Shrine of Imam Hussain (AS)",
+  "shrineAbbas": "Holy Shrine of Al-Abbas (AS)",
+  "ziyarats": "Ziyarats",
+  "ziyaratTitle": "Treasure of Ziyarats",
+  "ziyaratSubtitle": "Spiritual connection with the divine guides",
+  "fontSize": "Font Size",
+  "readZiyarat": "Read Ziyarat",
+  "ziyaratAshura": "Ziyarat Ashura",
+  "ziyaratWarith": "Ziyarat Warith",
+  "ziyaratAshuraDesc": "Ziyarat Ashura is a highly respected salutation to Imam Hussain (AS) and the martyrs of Karbala.",
+  "ziyaratWarithDesc": "Ziyarat Warith connects Imam Hussain (AS) to the divine mission of all Prophets."
+}

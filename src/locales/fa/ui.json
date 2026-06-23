@@ -1,0 +1,33 @@
+{
+  "galleryTitle": "راویان نور",
+  "gallerySubtitle": "آشنایی با حماسه‌سازان واقعه کربلا",
+  "searchPlaceholder": "جستجوی نام یا لقب...",
+  "age": "سن",
+  "role": "نقش",
+  "source": "منبع تاریخی",
+  "filters": {
+    "All": "همه افراد",
+    "catBaniHashem": "بنی‌هاشم",
+    "catAnsar": "انصار و یاران",
+    "catWomen": "بانوان حرم",
+    "catPioneers": "شهدای پیش‌گام",
+    "catSurvivors": "توابین و بازماندگان",
+    "catCaptives": "اسیران",
+    "catEnemies": "لشکر ظلم"
+  },
+  "home": "خانه",
+  "liveZiyarat": "زیارت آنلاین",
+  "liveTitle": "پخش زنده حرم مطهر",
+  "liveSubtitle": "ارتباط مستقیم با کربلای معلی",
+  "shrineHussain": "حرم مطهر امام حسین (ع)",
+  "shrineAbbas": "حرم مطهر حضرت ابوالفضل العباس (ع)",
+  "ziyarats": "زیارت‌نامه‌ها",
+  "ziyaratTitle": "گنجینه زیارات",
+  "ziyaratSubtitle": "ارتباط قلبی با اولیای الهی",
+  "fontSize": "اندازه متن",
+  "readZiyarat": "قرائت زیارت",
+  "ziyaratAshura": "زیارت عاشورا",
+  "ziyaratWarith": "زیارت وارث",
+  "ziyaratAshuraDesc": "زیارت عاشورا، عرض ارادت و سلامی پرفضیلت به محضر امام حسین (ع) و شهدای کربلاست.",
+  "ziyaratWarithDesc": "زیارت وارث، پیوند دهنده رسالت امام حسین (ع) با مسیر نورانی تمام پیامبران الهی است."
+}
