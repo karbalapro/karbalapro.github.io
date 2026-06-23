@@ -16,8 +16,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "دانشنامه عاشورا",
-  description: "دایرةالمعارف شخصیت‌های واقعه کربلا",
+  metadataBase: new URL('https://karbalapro.github.io'),
+  title: {
+    default: "دانشنامه عاشورا و زیارت‌نامه‌های تعاملی | Ashura Encyclopedia",
+    template: "%s | دانشنامه عاشورا",
+  },
+  description: "جامع‌ترین دایرةالمعارف شخصیت‌های واقعه کربلا (بیش از ۲۷۴ شخصیت) به همراه قرائت تعاملی زیارت عاشورا و زیارت وارث با ترجمه سه‌زبانه.",
+  keywords: ["کربلا", "عاشورا", "امام حسین", "زیارت عاشورا", "زیارت وارث", "شخصیت‌های کربلا", "دانشنامه عاشورا", "Karbala", "Ashura", "Imam Hussain", "Ziyarat Ashura"],
+  authors: [{ name: "Karbala Pro" }],
+  creator: "Karbala Pro",
+  openGraph: {
+    type: "website",
+    locale: "fa_IR",
+    url: "https://karbalapro.github.io",
+    title: "دانشنامه تعاملی عاشورا",
+    description: "جامع‌ترین دایرةالمعارف شخصیت‌های واقعه کربلا به همراه زیارت‌نامه‌های صوتی.",
+    siteName: "Karbala Pro",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "دانشنامه تعاملی عاشورا",
+    description: "بزرگترین پایگاه داده شخصیت‌های عاشورا",
+  },
+  verification: {
+    google: "KHjQLFqA7PcO8zTOp2oaOklFYdGi7uclfCgZcAfB_5o",
+  },
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({
@@ -25,12 +51,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // JSON-LD Schema for LLMs and Google
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "دانشنامه عاشورا | Karbala Pro",
+    "url": "https://karbalapro.github.io",
+    "description": "جامع‌ترین دایرةالمعارف شخصیت‌های کربلا و زیارت‌نامه‌ها",
+    "inLanguage": ["fa", "en", "ar"]
+  };
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[#0a0a0a] text-white">
+        {/* Inject JSON-LD Schema for AI/LLM SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <LanguageProvider>
           <Header />
           <main className="flex-1">
