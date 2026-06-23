@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next'
 import { ziyarats } from '@/data/ziyarats'
 import { personas } from '@/data/personas'
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://karbalapro.github.io'
 
