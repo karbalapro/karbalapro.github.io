@@ -145,33 +145,33 @@ export default function PersonaPage({ params }: { params: Promise<{ lang: string
         {/* Body */}
         <div className="p-8 space-y-8">
           <div className="flex gap-4 text-sm text-white/40">
-            <span>{t("ui.role")}: {t(`personas.${persona.id}.role`)}</span>
+            <span>{t("ui.role")}: {t(`personas.${persona.id}.role`, { defaultValue: '' })}</span>
           </div>
 
           <p className="text-xl text-white/90 leading-relaxed font-light text-justify">
-            {t(`personas.${persona.id}.shortDescription`)}
+            {t(`personas.${persona.id}.shortDescription`, { defaultValue: '' })}
           </p>
 
           <div className="w-full h-px bg-white/5 my-8" />
 
           <div className="prose prose-invert max-w-none">
             <p className="text-white/70 leading-loose text-justify text-lg whitespace-pre-wrap">
-              {t(`personas.${persona.id}.fullStory`)}
+              {t(`personas.${persona.id}.fullStory`, { defaultValue: '' })}
             </p>
           </div>
 
-          {t(`personas.${persona.id}.quote`) && (
+          {t(`personas.${persona.id}.quote`, { defaultValue: '' }) && (
             <div className="mt-12 bg-white/5 border-l-4 border-white/20 p-6 sm:p-8 rounded-r-2xl italic">
-              {t(`personas.${persona.id}.quoteArabic`) && (
+              {t(`personas.${persona.id}.quoteArabic`, { defaultValue: '' }) && (
                 <p className="text-xl sm:text-2xl text-white font-serif mb-6 leading-loose text-right" dir="rtl">
-                  {t(`personas.${persona.id}.quoteArabic`)}
+                  {t(`personas.${persona.id}.quoteArabic`, { defaultValue: '' })}
                 </p>
               )}
               <p className="text-lg text-white/80 leading-relaxed">
-                "{t(`personas.${persona.id}.quote`)}"
+                "{t(`personas.${persona.id}.quote`, { defaultValue: '' })}"
               </p>
               <div className="mt-4 text-sm text-white/40 font-mono">
-                — {t(`personas.${persona.id}.source`)}
+                — {t(`personas.${persona.id}.source`, { defaultValue: '' })}
               </div>
             </div>
           )}
