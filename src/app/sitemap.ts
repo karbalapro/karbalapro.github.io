@@ -13,9 +13,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
-  // Dynamic Persona routes
-  // Actually, personas are currently rendered in a modal on the home page, not as individual routes.
-  // But if we ever add individual routes, they would go here.
+  // Dynamic Persona routes for all languages
+  const languages = ['fa', 'en', 'ar'];
+  const personaRoutes = [];
+  
+  for (const lang of languages) {
+    for (const persona of personas) {
+      personaRoutes.push({
+        url: `${baseUrl}/${lang}/personas/${persona.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      });
+    }
+  }
   
   return [
     {
@@ -31,5 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...ziyaratRoutes,
+    ...personaRoutes,
   ]
 }
