@@ -53,15 +53,7 @@ export default function Atmosphere() {
         ))}
       </div>
 
-      {/* CSS Animation for particles */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes floatUp {
-          0% { transform: translateY(0) translateX(0); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
-        }
-      `}} />
+      </div>
     </div>
   );
 }

@@ -69,6 +69,9 @@ export default function RootLayout({
       dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preload" as="image" href="/images/avatars/specific/imam-hussain.png" />
+      </head>
       <body className="min-h-full flex flex-col text-white">
         {/* Inject JSON-LD Schema for AI/LLM SEO */}
         <script
