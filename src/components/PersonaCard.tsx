@@ -56,7 +56,7 @@ export default function PersonaCard({ persona, onClick, priority = false }: Prop
         <div className={`z-10 relative mt-auto ${dir === "ltr" ? "text-left" : "text-right"}`}>
           <motion.span 
             layoutId={`category-${persona.id}`}
-            className="text-xs font-mono text-white/50 mb-2 block"
+            className="text-xs font-mono text-white/70 mb-2 block"
           >
             {t(`ui.filters.${persona.category}`)}
           </motion.span>
@@ -69,7 +69,7 @@ export default function PersonaCard({ persona, onClick, priority = false }: Prop
           <motion.p 
             layoutId={`title-${persona.id}`}
             className="text-sm font-light"
-            style={{ color: persona.colorAccent }}
+            style={{ color: `color-mix(in srgb, ${persona.colorAccent} 40%, white)` }}
           >
             {t(`personas.${persona.id}.title`)}
           </motion.p>
