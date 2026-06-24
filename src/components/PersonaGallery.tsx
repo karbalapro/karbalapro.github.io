@@ -136,12 +136,13 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <AnimatePresence>
-                {paginatedPersonas.map((persona) => (
+              <AnimatePresence mode="popLayout">
+                {paginatedPersonas.map((persona, index) => (
                   <Link key={persona.id} href={`/${language}/personas/${persona.id}`} className="block h-full">
                     <PersonaCard 
                       persona={persona} 
                       onClick={() => {}} 
+                      priority={index < 6}
                     />
                   </Link>
                 ))}

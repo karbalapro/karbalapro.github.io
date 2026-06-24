@@ -9,9 +9,10 @@ import { getAvatarUrl } from "@/utils/avatar";
 interface Props {
   persona: Persona;
   onClick: () => void;
+  priority?: boolean;
 }
 
-export default function PersonaCard({ persona, onClick }: Props) {
+export default function PersonaCard({ persona, onClick, priority = false }: Props) {
   const { dir } = useLanguage();
   const { t } = useTranslation();
   const avatarSrc = getAvatarUrl(persona);
@@ -44,6 +45,10 @@ export default function PersonaCard({ persona, onClick }: Props) {
               src={avatarSrc} 
               alt={t(`personas.${persona.id}.name`)}
               className="absolute inset-0 w-full h-full object-cover z-10"
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : "auto"}
+              width={128}
+              height={128}
             />
           </div>
         </div>
