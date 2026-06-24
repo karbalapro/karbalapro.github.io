@@ -4,13 +4,11 @@ export const personas: Persona[] = [
   {
     id: "imam-hussain",
     category: "catBaniHashem",
-    avatarImage: "/images/imam-hussain.png",
     colorAccent: "#8a0303",
   },
   {
     id: "abbas-ibn-ali",
     category: "catBaniHashem",
-    avatarImage: "/images/abbas-ibn-ali.png",
     colorAccent: "#cfb53b",
   },
   {

@@ -128,15 +128,16 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        {isFiltering ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="w-12 h-12 border-4 border-white/10 border-t-emerald-500 rounded-full animate-spin"></div>
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <AnimatePresence mode="popLayout">
+        {/* Gallery Grid Container */}
+        <div className="relative min-h-[500px]">
+          {isFiltering && (
+            <div className="absolute inset-0 z-20 flex justify-center items-center bg-[#0a0a0a]/50 backdrop-blur-sm rounded-3xl">
+              <div className="w-12 h-12 border-4 border-white/10 border-t-emerald-500 rounded-full animate-spin"></div>
+            </div>
+          )}
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence mode="popLayout">
                 {paginatedPersonas.map((persona, index) => (
                   <Link key={persona.id} href={`/${language}/personas/${persona.id}`} className="block h-full">
                     <PersonaCard 
@@ -185,8 +186,7 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
                 </button>
               </div>
             )}
-          </>
-        )}
+        </div>
       </div>
     </div>
   );

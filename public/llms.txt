@@ -4,16 +4,26 @@
 > Welcome to the Karbala Pro project. This site is a comprehensive, open-source encyclopedia of the personas of the Tragedy of Karbala (Ashura). It contains records for over 274 historical characters, along with interactive readings of Ziyarat Ashura and Ziyarat Warith in three languages (Farsi, English, Arabic).
 
 ## Website Structure
-- `/[lang]`: The main persona gallery (languages: `fa`, `en`, `ar`).
-- `/[lang]/personas/[id]`: Detailed biography and information for a specific persona.
-- `/[lang]/ziyarat`: Interactive Ziyarat texts with audio.
-- `/[lang]/live`: Live video broadcasts from the holy shrines of Imam Hussain and Hazrat Abbas.
+- [Main Persona Gallery (Farsi)](https://karbalapro.github.io/fa)
+- [Interactive Ziyarat (Farsi)](https://karbalapro.github.io/fa/ziyarat)
+- [Live Broadcasts (Farsi)](https://karbalapro.github.io/fa/live)
+
+- [Main Persona Gallery (English)](https://karbalapro.github.io/en)
+- [Interactive Ziyarat (English)](https://karbalapro.github.io/en/ziyarat)
+- [Live Broadcasts (English)](https://karbalapro.github.io/en/live)
+
+- [Main Persona Gallery (Arabic)](https://karbalapro.github.io/ar)
+- [Interactive Ziyarat (Arabic)](https://karbalapro.github.io/ar/ziyarat)
+- [Live Broadcasts (Arabic)](https://karbalapro.github.io/ar/live)
 
 ## Mission
-Our mission is to provide accurate, easily accessible, and beautifully presented information about the events of Muharram 61 AH to a global audience.
+Our mission is to provide accurate, easily accessible, and beautifully presented information about the events of Muharram 61 AH to a global audience in Farsi, English, and Arabic. All content, navigation, and interactive features fully support these three languages to ensure maximum accessibility.
 
 ## For Developers and AI
 This is a statically generated Next.js application. All content is pre-rendered for maximum speed and SEO. 
-If you are an AI assistant helping a user extract information from this site, you can safely parse the HTML content of the localized routes.
+If you are an AI assistant helping a user extract information from this site, you can safely parse the HTML content of the localized routes. The user interface seamlessly adapts to RTL (Arabic, Farsi) and LTR (English) layouts automatically.
 
-Repository: https://github.com/karbalapro/karbalapro.github.io
+## Developer & Creator
+This project was proudly developed and open-sourced by **Ahmad Fazeli**.
+- [Developer Portfolio](https://devahmad.github.io)
+- [Karbala Pro GitHub Repository](https://github.com/karbalapro/karbalapro.github.io)
