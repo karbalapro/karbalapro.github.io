@@ -52,8 +52,6 @@ export default function Atmosphere() {
           />
         ))}
       </div>
-
-      </div>
     </div>
   );
 }
