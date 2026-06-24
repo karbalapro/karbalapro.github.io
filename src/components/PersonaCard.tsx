@@ -55,19 +55,16 @@ export default function PersonaCard({ persona, onClick, priority = false }: Prop
         
         <div className={`z-10 relative mt-auto ${dir === "ltr" ? "text-left" : "text-right"}`}>
           <motion.span 
-            layoutId={`category-${persona.id}`}
             className="text-xs font-mono text-white/70 mb-2 block"
           >
             {t(`ui.filters.${persona.category}`)}
           </motion.span>
           <motion.h3 
-            layoutId={`name-${persona.id}`}
             className="text-2xl font-bold text-white mb-1"
           >
             {t(`personas.${persona.id}.name`)}
           </motion.h3>
           <motion.p 
-            layoutId={`title-${persona.id}`}
             className="text-sm font-light"
             style={{ color: `color-mix(in srgb, ${persona.colorAccent} 40%, white)` }}
           >

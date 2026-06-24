@@ -137,7 +137,7 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
           )}
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="popLayout" initial={false}>
                 {paginatedPersonas.map((persona, index) => (
                   <Link key={persona.id} href={`/${language}/personas/${persona.id}`} className="block h-full">
                     <PersonaCard 
@@ -151,7 +151,7 @@ export default function PersonaGallery({ routeLang }: { routeLang?: string }) {
             </div>
 
             {/* Pagination Controls */}
-            {mounted && totalPages > 1 && (
+            {totalPages > 1 && (
               <div className="mt-16 w-full max-w-4xl mx-auto flex justify-between items-center bg-[#0a0a0a] border border-white/10 p-4 rounded-2xl shadow-2xl">
                 <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
