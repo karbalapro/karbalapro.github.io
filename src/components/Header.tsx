@@ -23,6 +23,7 @@ export default function Header() {
 
   const navItems = [
     { name: t("ui.home"), path: `/${language}` },
+    { name: t("ui.historyAndMap"), path: `/${language}/history` },
     { name: t("ui.liveZiyarat"), path: `/${language}/live` },
     { name: t("ui.ziyarats"), path: `/${language}/ziyarat` }
   ];

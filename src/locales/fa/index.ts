@@ -1,4 +1,5 @@
 import ui from './ui.json';
+import timeline from './timeline.json';
 import aaidhIbnMajma from './personas/aaidh-ibn-majma.json';
 import aaidhIbnMujammi from './personas/aaidh-ibn-mujammi.json';
 import abbasIbnAli from './personas/abbas-ibn-ali.json';
@@ -276,6 +277,7 @@ import zuhayrIbnSulaym from './personas/zuhayr-ibn-sulaym.json';
 
 const faTranslation = {
   ui,
+  timeline,
   personas: {
     "aaidh-ibn-majma": aaidhIbnMajma,
     "aaidh-ibn-mujammi": aaidhIbnMujammi,
