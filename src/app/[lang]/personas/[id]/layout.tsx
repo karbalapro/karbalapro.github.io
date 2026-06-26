@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   let description = '';
   
   try {
-    const localeData = require(`@/locales/${lang}/personas/${id}.json`);
+    const localeData = (await import(`@/locales/${lang}/personas/${id}.json`)).default || await import(`@/locales/${lang}/personas/${id}.json`);
     name = localeData.name;
     title = localeData.title;
     description = localeData.description || localeData.biography?.substring(0, 150) + '...';
@@ -67,7 +67,7 @@ export default async function PersonaLayout({ children, params }: { children: Re
   let name = id;
   let desc = '';
   try {
-    const localeData = require(`@/locales/${lang}/personas/${id}.json`);
+    const localeData = (await import(`@/locales/${lang}/personas/${id}.json`)).default || await import(`@/locales/${lang}/personas/${id}.json`);
     name = localeData.name;
     desc = localeData.description || localeData.biography?.substring(0, 150) + '...';
   } catch (e) {}

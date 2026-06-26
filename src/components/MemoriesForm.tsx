@@ -108,7 +108,7 @@ export default function MemoriesForm() {
       const result = await submitMemory(formData);
       
       if (result?.error) {
-        setStatus({ type: 'error', message: result.error });
+        setStatus({ type: 'error', message: t(`ui.errors.${result.error}`) });
       } else if (result?.success) {
         const trackingText = language === 'fa' 
           ? ` کد پیگیری شما: ${result.trackingCode}` 

@@ -19,22 +19,22 @@ export async function submitMemory(formData: FormData) {
   const audioFile = formData.get("audio") as File | null;
 
   if (!content && (!audioFile || audioFile.size === 0)) {
-    return { error: "متن یا صدای خاطره نمی‌تواند خالی باشد." };
+    return { error: "ERROR_EMPTY_CONTENT" };
   }
 
   if (content.length > 2000) {
-    return { error: "متن خاطره بسیار طولانی است." };
+    return { error: "ERROR_TOO_LONG" };
   }
 
   if (containsProfanity(name) || containsProfanity(content)) {
-    return { error: "متن شما حاوی کلمات نامناسب است و قابل ثبت نمی‌باشد." };
+    return { error: "ERROR_PROFANITY" };
   }
 
   let audioUrl = null;
 
   if (audioFile && audioFile.size > 0) {
     if (audioFile.size > 1024 * 1024 * 1.5) {
-      return { error: "حجم فایل صوتی نباید بیشتر از ۱.۵ مگابایت باشد." };
+      return { error: "ERROR_FILE_TOO_LARGE" };
     }
 
     const fileName = `voice_${Date.now()}_${Math.random().toString(36).substring(7)}.webm`;
@@ -45,7 +45,7 @@ export async function submitMemory(formData: FormData) {
 
     if (uploadError) {
       console.error("Error uploading audio:", uploadError);
-      return { error: "خطا در آپلود فایل صوتی." };
+      return { error: "ERROR_UPLOAD_FAILED" };
     }
 
     const { data: publicUrlData } = supabase.storage
@@ -73,7 +73,7 @@ export async function submitMemory(formData: FormData) {
 
   if (error) {
     console.error("Error inserting memory:", error);
-    return { error: "خطایی در ثبت خاطره رخ داد. لطفا دوباره تلاش کنید." };
+    return { error: "ERROR_INSERT_FAILED" };
   }
 
   return { success: true, trackingCode };

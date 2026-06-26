@@ -94,5 +94,13 @@
   "stopRecording": "Stop Recording",
   "deleteVoice": "Delete Voice",
   "recordingLimitReached": "Recording limit reached.",
-  "voiceOptional": "You can submit voice or text (or both)."
+  "voiceOptional": "You can submit voice or text (or both).",
+  "errors": {
+    "ERROR_EMPTY_CONTENT": "The text or audio of the memory cannot be empty.",
+    "ERROR_TOO_LONG": "The memory text is too long.",
+    "ERROR_PROFANITY": "Your text contains inappropriate words and cannot be submitted.",
+    "ERROR_FILE_TOO_LARGE": "The audio file size should not exceed 1.5 MB.",
+    "ERROR_UPLOAD_FAILED": "Error uploading the audio file.",
+    "ERROR_INSERT_FAILED": "An error occurred while submitting your memory. Please try again."
+  }
 }
