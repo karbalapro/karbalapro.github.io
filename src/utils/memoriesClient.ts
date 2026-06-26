@@ -1,10 +1,5 @@
-"use server";
+import { createClient } from "@/utils/supabase/client";
 
-import { createClient } from "@/utils/supabase/server";
-import { revalidatePath } from "next/cache";
-
-// A basic blocklist for Persian/English profanity (placeholder)
-// In a real production app, you might want to use a more robust library or API.
 const badWordsList = [
   "احمق", "بی‌شعور", "آشغال", "کثافت", "خر", "گاو", "نفهم", "کودن",
   "fuck", "shit", "bitch", "asshole", "cunt", "dick", "pussy"
@@ -16,7 +11,7 @@ function containsProfanity(text: string): boolean {
 }
 
 export async function submitMemory(formData: FormData) {
-  const supabase = await createClient();
+  const supabase = createClient();
   
   const name = formData.get("name")?.toString().trim() || "ناشناس";
   const content = formData.get("content")?.toString().trim() || "";
@@ -38,7 +33,6 @@ export async function submitMemory(formData: FormData) {
   let audioUrl = null;
 
   if (audioFile && audioFile.size > 0) {
-    // 1 MB limit (just to be safe)
     if (audioFile.size > 1024 * 1024 * 1.5) {
       return { error: "حجم فایل صوتی نباید بیشتر از ۱.۵ مگابایت باشد." };
     }
@@ -73,7 +67,7 @@ export async function submitMemory(formData: FormData) {
         language,
         audio_url: audioUrl,
         tracking_code: trackingCode,
-        is_approved: false // Requires admin approval in Supabase Dashboard
+        is_approved: false
       }
     ]);
 
@@ -83,22 +77,4 @@ export async function submitMemory(formData: FormData) {
   }
 
   return { success: true, trackingCode };
-}
-
-export async function getMemories(language: string) {
-  const supabase = await createClient();
-  
-  const { data, error } = await supabase
-    .from("memories")
-    .select("*")
-    .eq("language", language)
-    .eq("is_approved", true)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    console.error("Error fetching memories:", error);
-    return [];
-  }
-
-  return data;
 }

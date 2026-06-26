@@ -1,4 +1,4 @@
-import { getMemories } from "@/app/actions/memories";
+import { getMemories } from "@/utils/memoriesServer";
 import MemoriesForm from "@/components/MemoriesForm";
 import CustomAudioPlayer from "@/components/CustomAudioPlayer";
 import faUi from '@/locales/fa/ui.json';

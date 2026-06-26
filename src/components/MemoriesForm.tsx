@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { submitMemory } from "@/app/actions/memories";
+import { submitMemory } from "@/utils/memoriesClient";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Send, CheckCircle, AlertCircle, Mic, Square, Trash2 } from "lucide-react";
 import CustomAudioPlayer from "./CustomAudioPlayer";
