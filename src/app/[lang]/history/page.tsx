@@ -19,7 +19,8 @@ interface Props {
   };
 }
 
-export function generateMetadata({ params: { lang } }: Props): Metadata {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   const dict = dictionaries[lang] || dictionaries['fa'];
   
   return {
@@ -28,7 +29,8 @@ export function generateMetadata({ params: { lang } }: Props): Metadata {
   };
 }
 
-export default function HistoryPage({ params: { lang } }: Props) {
+export default async function HistoryPage({ params }: Props) {
+  const { lang } = await params;
   const dict = dictionaries[lang] || dictionaries['fa'];
   
   return (

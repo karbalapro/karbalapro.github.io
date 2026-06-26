@@ -10,6 +10,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PersonaCard from "@/components/PersonaCard";
 
+export function generateStaticParams() {
+  return personas.map((persona) => ({
+    id: persona.id,
+  }));
+}
+
 export default function PersonaPage({ params }: { params: Promise<{ lang: string, id: string }> }) {
   const resolvedParams = use(params);
   const { lang, id } = resolvedParams;

@@ -18,6 +18,7 @@
     "next": "Next"
   },
   "home": "Home",
+  "personasTitle": "Personas",
   "liveZiyarat": "Live Ziyarat",
   "liveTitle": "Holy Shrines Live Stream",
   "liveSubtitle": "Direct connection to holy Karbala",
@@ -71,5 +72,27 @@
     "qasimMartyrdomDesc": "Where the young nephew of the Imam fought heroically and was struck down.",
     "alqamahRiver": "Alqamah River",
     "alqamahRiverDesc": "A branch of the Euphrates blocked by the enemy, where Abbas (AS) sacrificed his arms."
-  }
+  },
+  "memoriesTitle": "Memories & Reflections",
+  "memoriesDesc": "Share your feelings, Ziyarat experiences, and reflections with other lovers of Aba Abdillah al-Hussain (AS).",
+  "community": "Community",
+  "recentMemories": "Recent Reflections",
+  "noMemoriesYet": "No memories have been shared yet.",
+  "beFirstToShare": "Be the first to share your reflection.",
+  "writeYourMemory": "Share a Memory",
+  "writeYourMemoryDesc": "Write your beautiful memories and reflections from your Ziyarat to Karbala.",
+  "yourName": "Your Name",
+  "namePlaceholder": "e.g., Ali (or Anonymous)",
+  "optional": "Optional",
+  "yourMemory": "Your Reflection",
+  "memoryPlaceholder": "Write your reflection here...",
+  "submitMemory": "Submit Memory",
+  "submitting": "Submitting...",
+  "memorySubmittedSuccess": "Your reflection was successfully submitted and will appear after review.",
+  "memorySubmitError": "An error occurred. Please try again.",
+  "recordVoice": "Record Voice",
+  "stopRecording": "Stop Recording",
+  "deleteVoice": "Delete Voice",
+  "recordingLimitReached": "Recording limit reached.",
+  "voiceOptional": "You can submit voice or text (or both)."
 }

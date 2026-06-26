@@ -25,7 +25,9 @@ export default function Header() {
     { name: t("ui.home"), path: `/${language}` },
     { name: t("ui.historyAndMap"), path: `/${language}/history` },
     { name: t("ui.liveZiyarat"), path: `/${language}/live` },
-    { name: t("ui.ziyarats"), path: `/${language}/ziyarat` }
+    { name: t("ui.ziyarats"), path: `/${language}/ziyarat` },
+    { name: t("ui.personasTitle"), path: `/${language}/personas` },
+    { name: t("ui.memoriesTitle"), path: `/${language}/memories` }
   ];
 
   return (

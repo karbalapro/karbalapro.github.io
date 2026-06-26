@@ -16,6 +16,7 @@
     "catEnemies": "جيش الظلم"
   },
   "home": "الرئيسية",
+  "personasTitle": "الشخصيات",
   "liveZiyarat": "الزيارة المباشرة",
   "liveTitle": "البث المباشر للعتبات المقدسة",
   "liveSubtitle": "ارتباط مباشر بكربلاء المقدسة",
@@ -69,5 +70,27 @@
     "qasimMartyrdomDesc": "موقع استشهاد ابن الحسن المجتبى (ع) بعد معركة ملحمية.",
     "alqamahRiver": "نهر العلقمي / الشريعة",
     "alqamahRiverDesc": "فرع من الفرات المحاصر، حيث ضحى أبو الفضل العباس (ع) بكفيه."
-  }
+  },
+  "memoriesTitle": "ذكريات وخواطر",
+  "memoriesDesc": "شارك مشاعرك وتجارب الزيارة وخواطرك مع محبي أبي عبد الله الحسين (ع).",
+  "community": "المجتمع الحسيني",
+  "recentMemories": "أحدث الخواطر",
+  "noMemoriesYet": "لم يتم تسجيل أي ذكرى بعد.",
+  "beFirstToShare": "كن أول من يشارك خاطرته.",
+  "writeYourMemory": "سجل خاطرتك",
+  "writeYourMemoryDesc": "اكتب ذكرياتك ومشاعرك الجميلة من زيارة كربلاء.",
+  "yourName": "اسمك",
+  "namePlaceholder": "مثال: علي (أو مجهول)",
+  "optional": "اختياري",
+  "yourMemory": "نص الخاطرة",
+  "memoryPlaceholder": "اكتب خاطرتك هنا...",
+  "submitMemory": "إرسال الخاطرة",
+  "submitting": "جاري الإرسال...",
+  "memorySubmittedSuccess": "تم إرسال خاطرتك بنجاح وستظهر بعد المراجعة.",
+  "memorySubmitError": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+  "recordVoice": "تسجيل صوتي",
+  "stopRecording": "إيقاف التسجيل",
+  "deleteVoice": "حذف الصوت",
+  "recordingLimitReached": "تم الوصول إلى الحد الأقصى للتسجيل.",
+  "voiceOptional": "يمكنك إرسال صوت أو نص (أو كلاهما)."
 }
